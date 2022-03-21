@@ -14,7 +14,8 @@
 //BBASV 3.0 ball shooter board
 //Firmware Version :  v1.0
 //
-// Written by Titus for AUV 3.0 Ball shooter 
+// Written by Titus for ASV 3.0 Ball shooter 
+// Test code for isolators 
 //
 // TMC 2209 drivers are connected to Serial 1 
 //###################################################
@@ -49,13 +50,38 @@ const int stepper5_m1 = 35;
 const int stepper5_m2 = 36;
 
 // servo setup 
-const int servo_pwm = 12;
+int test = 44;
+const int servo1;
 void setup() {
-  // put your setup code here, to run once:
-
+  Serial.begin(115200);
+  for (int i = 2; i < 15; i++) {
+    pinMode(i, OUTPUT);
+  }
+  for (int i = 22; i < 37; i++) {
+    pinMode(i, OUTPUT);
+  }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  // put your main code here, to run repeatedly:
+//  if (Serial.available() > 0) {
+//    int val = Serial.parseInt();
+    for (int i = 2; i < 15; i++) {
+      digitalWrite(i, HIGH);
+    }
+    for (int i = 22; i < 37; i++) {
+      digitalWrite(i, HIGH);
+    }
+    delay(100);
+    for (int i = 2; i < 15; i++) {
+      digitalWrite(i, LOW);
+    }
+    for (int i = 22; i < 37; i++) {
+      digitalWrite(i, LOW);
+    }
+//  }
 
+  Serial.println("working");
+  delay(100);
 }
